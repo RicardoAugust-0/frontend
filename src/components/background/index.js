@@ -33,7 +33,7 @@ function Background() {
     return (
         <div className="relative w-full h-screen overflow-hidden">
             {/* Fundo preto fixo */}
-            <div className="fixed top-0 left-0 w-full h-full bg-black z-0" />
+            <div className="fixed top-0 left-0 w-full h-3/5 bg-black z-0" />
 
             {/* Vídeo por cima com fade */}
             <video
@@ -42,12 +42,14 @@ function Background() {
                 muted
                 playsInline
                 autoPlay
-                className={`object-cover w-full h-full fixed top-0 left-0 z-10 transition-opacity duration-700 ${fade ? 'opacity-0' : 'opacity-40'
-                    }`}
+                className={`object-cover w-full h-3/5 fixed top-0 left-0 z-10 pointer-events-none transition-opacity duration-700 ${fade ? 'opacity-0' : 'opacity-40'
+                    } `}
             >
                 <source src={videos[currentVideo]} type="video/mp4" />
                 Seu navegador não suporta vídeos.
             </video>
+
+            
         </div>
     )
 };

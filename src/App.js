@@ -1,12 +1,16 @@
-import React from 'react';
-import './App.css';
-import Background from './components/background';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './public/pages/Layout';
+import Login from './public/pages/Login';
+import './App.css'
 
-function App() {
+export default function App() {
     return (
-        <Background/>
-        
+        <BrowserRouter>
+            <Routes>
+                <Route path='/' element={<Layout />}>
+                    <Route index element={<Login />} />
+                </Route>
+            </Routes>
+        </BrowserRouter>
     );
 }
-
-export default App;
