@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# Moovox Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este é o frontend da aplicação Moovox. Para executar o projeto localmente, siga as instruções abaixo.
 
-## Available Scripts
+## Como Iniciar
 
-In the project directory, you can run:
+1.  **Clone o repositório:**
+    ```bash
+    git clone [https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content)
+    cd frontend
+    ```
+    *(Substitua `https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content` pelo endereço real do seu repositório Git.)*
 
-### `npm start`
+2.  **Instale as dependências:**
+    ```bash
+    npm install
+    ```
+    Este comando irá instalar todas as bibliotecas e dependências necessárias para o projeto, conforme listado no arquivo `package.json`.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+3.  **Inicie a aplicação:**
+    ```bash
+    npm start
+    ```
+    Este comando executa o script "start" definido no arquivo `package.json`. Para projetos React criados comumente usando Create React App ou ferramentas similares, este script geralmente inicia um servidor de desenvolvimento local.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+4.  **Visualize no navegador:**
+    Após executar o comando `npm start`, a aplicação deverá abrir automaticamente no seu navegador ou fornecer um endereço (geralmente `http://localhost:3000`) onde você pode visualizá-la.
 
-### `npm test`
+## Explicação Rápida
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+O comando `npm start` é uma convenção em projetos Node.js (e, por extensão, em muitos projetos frontend como React). Ele é configurado no arquivo `package.json` dentro da seção "scripts". Essa seção define vários comandos que você pode executar usando o `npm`.
 
-### `npm run build`
+No caso de projetos React, o script "start" é tipicamente configurado para iniciar um servidor de desenvolvimento que recompila automaticamente o seu código quando você faz alterações e atualiza a página no navegador, facilitando o processo de desenvolvimento.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Se você tiver alguma dúvida ou encontrar problemas ao iniciar o projeto, consulte a documentação das tecnologias utilizadas (React, Node.js, npm) ou entre em contato com os desenvolvedores do projeto.
