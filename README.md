@@ -6,7 +6,7 @@ Este é o frontend da aplicação Moovox. Para executar o projeto localmente, si
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com/RicardoAugust-0/frontend.git](https://github.com/RicardoAugust-0/frontend.git)
+    git clone https://github.com/RicardoAugust-0/frontend.git
     cd frontend
     ```
 
