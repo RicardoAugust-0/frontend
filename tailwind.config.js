@@ -1,7 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,jsx}",
+    "./components/**/*.{js,jsx}",
+    "./node_modules/@radix-ui/themes/dist/themes.css", // Se estiver usando Radix Themes
+    "./node_modules/shadcn-ui/dist/components/**/*.{js,jsx}", // Importante para o Shadcn UI
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -9,5 +15,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 }
