@@ -6,10 +6,9 @@ Este é o frontend da aplicação Moovox. Para executar o projeto localmente, si
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content)
+    git clone [https://github.com/RicardoAugust-0/frontend.git](https://github.com/RicardoAugust-0/frontend.git)
     cd frontend
     ```
-    *(Substitua `https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content` pelo endereço real do seu repositório Git.)*
 
 2.  **Instale as dependências:**
     ```bash
