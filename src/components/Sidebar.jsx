@@ -9,7 +9,7 @@ import {
     User,
     ArrowLeftFromLine,
     Icon,
-    Menu // Importe o ícone de menu
+    Menu
 } from 'lucide-react';
 import { cowHead } from '@lucide/lab';
 

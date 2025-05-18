@@ -1,0 +1,28 @@
+// jsconfig.json (para projetos JavaScript)
+{
+    "compilerOptions": {
+        "jsx": "react",
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ], // Se @ aponta para src
+            "@root/*": [
+                "./*"
+            ], // Se você configurou @root para a raiz
+            "@lib/*": [
+                "src/lib/*"
+            ] // Se você quer um alias específico para lib
+        }
+    },
+    "include": [
+        "./src/**/*",
+        "./components/**/*",
+        "src/lib/**/*",
+        "./*.js",
+        "./*.jsx"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

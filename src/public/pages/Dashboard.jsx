@@ -1,6 +1,7 @@
 // public/pages/Dashboard.jsx
 import React, { useState } from 'react';
 import Sidebar from '../../components/Sidebar';
+import { Button } from '../../components/ui/button';
 
 function Dashboard() {
     const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
@@ -21,6 +22,7 @@ function Dashboard() {
                 {/* Conteúdo principal do Dashboard */}
                 <div>
                     <p className="text-gray-800">Conteúdo principal do Dashboard aqui...</p>
+                    
                 </div>
             </main>
         </div>
