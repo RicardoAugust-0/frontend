@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 import Dashboard from './public/pages/Dashboard';
 import Login from './public/pages/Login';
 import ForgotPass from './public/pages/ForgotPass';
@@ -10,6 +11,7 @@ export default function App() {
     return (
         <BrowserRouter>
                 <Analytics mode='auto'/>
+                <SpeedInsights />
             <Routes>
                 <Route path="/" element={<AuthLayout />}>
                     <Route index element={<Login />} />
