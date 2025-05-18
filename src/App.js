@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Analytics } from "@vercel/analytics/react"
 import Dashboard from './public/pages/Dashboard';
 import Login from './public/pages/Login';
 import ForgotPass from './public/pages/ForgotPass';
@@ -9,6 +10,7 @@ export default function App() {
     return (
         <BrowserRouter>
             <Routes>
+                <Analytics mode='auto'/>
                 <Route path="/" element={<AuthLayout />}>
                     <Route index element={<Login />} />
                     <Route path="forgot-pass" element={<ForgotPass />} />
