@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-function Background() {
+function LoginLayout({ children }) {
 
     const videos = [
         '/media/background1.mp4',
@@ -34,7 +34,6 @@ function Background() {
         <div className="relative w-full h-screen overflow-hidden">
             {/* Fundo preto fixo */}
             <div className="fixed top-0 left-0 w-full h-3/5 bg-black z-0" />
-
             {/* Vídeo por cima com fade */}
             <video
                 ref={videoRef}
@@ -49,9 +48,12 @@ function Background() {
                 Seu navegador não suporta vídeos.
             </video>
 
-            
+            {/*Div que irá conter o conteúdo filho, no caso o LoginCard.jsx*/}
+            <div className='relative z-20 flex justify-center items-center h-f'>
+                {children}
+            </div>
         </div>
     )
 };
 
-export default Background
+export default LoginLayout
