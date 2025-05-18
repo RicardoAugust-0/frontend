@@ -21,7 +21,7 @@
         "src/lib/**/*",
         "./*.js",
         "./*.jsx"
-    ],
+, "src/lib/utils.js"    ],
     "exclude": [
         "node_modules"
     ]

@@ -1,7 +1,6 @@
 // public/pages/Dashboard.jsx
 import React, { useState } from 'react';
 import Sidebar from '../../components/Sidebar';
-import { Button } from '../../components/ui/button';
 
 function Dashboard() {
     const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
