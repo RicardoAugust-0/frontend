@@ -1,8 +1,9 @@
-import LoginCard from "../../components/LoginCard";
+import ForgotPassCard from "../../components/ForgotPassCard";
+
 
 function ForgotPass() {
     return (
-        <LoginCard />
+        <ForgotPassCard />
     )
 }
 
