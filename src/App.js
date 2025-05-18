@@ -9,8 +9,8 @@ import './App.css';
 export default function App() {
     return (
         <BrowserRouter>
-            <Routes>
                 <Analytics mode='auto'/>
+            <Routes>
                 <Route path="/" element={<AuthLayout />}>
                     <Route index element={<Login />} />
                     <Route path="forgot-pass" element={<ForgotPass />} />
