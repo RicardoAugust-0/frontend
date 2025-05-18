@@ -1,7 +1,18 @@
 import { Mail, Lock } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function LoginCard() {
+
+    const navigate = useNavigate();
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        // Lógica de autenticação será adicionada aqui 
+
+        navigate('/dashboard')
+    }
+
     return (
         <div className="w-full px-4"> {/* padding lateral em telas pequenas */}
             <div className="bg-white w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl flex flex-col justify-between shadow-[inset_0px_0px_4px_1px_#b3ffcf] bg-opacity-90 rounded-xl p-8 text-center items-center backdrop-blur-md mx-auto">
@@ -19,7 +30,7 @@ function LoginCard() {
                     Gestão inteligente de animais no campo
                 </p>
 
-                <form className="space-y-4 text-left w-full">
+                <form onSubmit={ handleSubmit } className="space-y-4 text-left w-full">
                     <div>
                         <label className="block font-poppins text-base text-gray-700 mb-1">E-mail</label>
                         <div className="flex bg-green-100 items-center border border-gray-300 rounded-xl pl-3">

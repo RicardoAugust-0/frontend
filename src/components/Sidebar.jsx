@@ -1,15 +1,16 @@
 // src/components/Sidebar.jsx
-import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import {
     LayoutDashboard,
     Users,
-    Cow,
     Droplets,
     Package,
     User,
-    ArrowLeftFromLine
+    ArrowLeftFromLine,
+    Icon
 } from 'lucide-react';
+
+import { cowHead } from '@lucide/lab';
 
 function Sidebar() {
     return (
@@ -45,7 +46,7 @@ function Sidebar() {
                         `flex items-center p-4 hover:bg-gray-700 ${isActive ? 'bg-green-700' : ''}`
                     }
                 >
-                    <Cow className="mr-2 w-5 h-5" />
+                    <Icon iconNode={cowHead} className="mr-2 w-5 h-5" />
                     Animais
                 </NavLink>
                 <NavLink
