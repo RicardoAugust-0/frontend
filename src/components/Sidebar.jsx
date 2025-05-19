@@ -13,13 +13,51 @@ import {
 } from 'lucide-react';
 import { cowHead } from '@lucide/lab';
 import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription } from './ui/dialog';
+import PropTypes from 'prop-types';
 
+/**
+ * Sidebar de navegação principal
+ * @param {{ onToggle?: () => void, isExpanded?: boolean, showContent?: boolean }} props
+ */
 function Sidebar({ onToggle, isExpanded, showContent }) {
     // Detecta se está em desktop (lg+) para forçar expandido
     const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 1024;
     const expanded = isDesktop ? true : isExpanded;
     const [open, setOpen] = useState(false);
     const navigate = useNavigate();
+    // Itens do menu extraídos para facilitar manutenção
+    const menuItems = [
+        {
+            to: '/dashboard',
+            icon: <LayoutDashboard className="mr-2 w-5 h-5" />,
+            label: 'Dashboard',
+        },
+        {
+            to: '/usuarios',
+            icon: <Users className="mr-2 w-5 h-5" />,
+            label: 'Usuários',
+        },
+        {
+            to: '/animais',
+            icon: <Icon iconNode={cowHead} className="mr-2 w-5 h-5" />,
+            label: 'Animais',
+        },
+        {
+            to: '/vacinas',
+            icon: <Droplets className="mr-2 w-5 h-5" />,
+            label: 'Vacinas',
+        },
+        {
+            to: '/aplicacoes',
+            icon: <Package className="mr-2 w-5 h-5" />,
+            label: 'Aplicações',
+        },
+        {
+            to: '/meu-perfil',
+            icon: <User className="mr-2 w-5 h-5" />,
+            label: 'Meu Perfil',
+        },
+    ];
     // Animação de entrada para desktop
     return (
         <>
@@ -47,60 +85,18 @@ function Sidebar({ onToggle, isExpanded, showContent }) {
                     </Link>
                 </div>
                 <nav className="mt-6">
-                    <NavLink
-                        to="/dashboard"
-                        className={({ isActive }) =>
-                            `flex items-center p-4 hover:bg-gray-700 ${isActive ? 'bg-green-700' : ''}`
-                        }
-                    >
-                        <LayoutDashboard className="mr-2 w-5 h-5" />
-                        <span className={`transition-opacity duration-300 ${expanded ? 'opacity-100' : 'opacity-0'} lg:opacity-100`}>Dashboard</span>
-                    </NavLink>
-                    <NavLink
-                        to="/usuarios"
-                        className={({ isActive }) =>
-                            `flex items-center p-4 hover:bg-gray-700 ${isActive ? 'bg-green-700' : ''}`
-                        }
-                    >
-                        <Users className="mr-2 w-5 h-5" />
-                        <span className={`transition-opacity duration-300 ${expanded ? 'opacity-100' : 'opacity-0'} lg:opacity-100`}>Usuários</span>
-                    </NavLink>
-                    <NavLink
-                        to="/animais"
-                        className={({ isActive }) =>
-                            `flex items-center p-4 hover:bg-gray-700 ${isActive ? 'bg-green-700' : ''}`
-                        }
-                    >
-                        <Icon iconNode={cowHead} className="mr-2 w-5 h-5" />
-                        <span className={`transition-opacity duration-300 ${expanded ? 'opacity-100' : 'opacity-0'} lg:opacity-100`}>Animais</span>
-                    </NavLink>
-                    <NavLink
-                        to="/vacinas"
-                        className={({ isActive }) =>
-                            `flex items-center p-4 hover:bg-gray-700 ${isActive ? 'bg-green-700' : ''}`
-                        }
-                    >
-                        <Droplets className="mr-2 w-5 h-5" />
-                        <span className={`transition-opacity duration-300 ${expanded ? 'opacity-100' : 'opacity-0'} lg:opacity-100`}>Vacinas</span>
-                    </NavLink>
-                    <NavLink
-                        to="/aplicacoes"
-                        className={({ isActive }) =>
-                            `flex items-center p-4 hover:bg-gray-700 ${isActive ? 'bg-green-700' : ''}`
-                        }
-                    >
-                        <Package className="mr-2 w-5 h-5" />
-                        <span className={`transition-opacity duration-300 ${expanded ? 'opacity-100' : 'opacity-0'} lg:opacity-100`}>Aplicações</span>
-                    </NavLink>
-                    <NavLink
-                        to="/meu-perfil"
-                        className={({ isActive }) =>
-                            `flex items-center p-4 hover:bg-gray-700 ${isActive ? 'bg-green-700' : ''}`
-                        }
-                    >
-                        <User className="mr-2 w-5 h-5" />
-                        <span className={`transition-opacity duration-300 ${expanded ? 'opacity-100' : 'opacity-0'} lg:opacity-100`}>Meu Perfil</span>
-                    </NavLink>
+                    {menuItems.map(({ to, icon, label }) => (
+                        <NavLink
+                            key={to}
+                            to={to}
+                            className={({ isActive }) =>
+                                `flex items-center p-4 hover:bg-gray-700 ${isActive ? 'bg-green-700' : ''}`
+                            }
+                        >
+                            {icon}
+                            <span className={`transition-opacity duration-300 ${expanded ? 'opacity-100' : 'opacity-0'} lg:opacity-100`}>{label}</span>
+                        </NavLink>
+                    ))}
                     <Dialog open={open} onOpenChange={setOpen}>
                         <DialogTrigger asChild>
                             <button className="flex items-center p-4 hover:bg-gray-700 mt-auto w-full">
@@ -125,5 +121,17 @@ function Sidebar({ onToggle, isExpanded, showContent }) {
         </>
     );
 }
+
+Sidebar.propTypes = {
+  onToggle: PropTypes.func,
+  isExpanded: PropTypes.bool,
+  showContent: PropTypes.bool,
+};
+
+Sidebar.defaultProps = {
+  onToggle: () => {},
+  isExpanded: false,
+  showContent: false,
+};
 
 export default Sidebar;

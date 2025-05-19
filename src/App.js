@@ -12,22 +12,29 @@ import Aplicacoes from './public/pages/Aplicacoes';
 import MeuPerfil from './public/pages/MeuPerfil';
 import './App.css';
 
+// Separação das rotas em um array para facilitar manutenção e escalabilidade
+const privateRoutes = [
+    { path: '/dashboard', element: <Dashboard /> },
+    { path: '/usuarios', element: <Usuarios /> },
+    { path: '/animais', element: <Animais /> },
+    { path: '/vacinas', element: <Vacinas /> },
+    { path: '/aplicacoes', element: <Aplicacoes /> },
+    { path: '/meu-perfil', element: <MeuPerfil /> },
+];
+
 export default function App() {
     return (
         <BrowserRouter>
-                <Analytics mode='auto'/>
-                <SpeedInsights />
+            <Analytics mode='auto' />
+            <SpeedInsights />
             <Routes>
                 <Route path="/" element={<AuthLayout />}>
                     <Route index element={<Login />} />
                     <Route path="forgot-pass" element={<ForgotPass />} />
                 </Route>
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/usuarios" element={<Usuarios />} />
-                <Route path="/animais" element={<Animais />} />
-                <Route path="/vacinas" element={<Vacinas />} />
-                <Route path="/aplicacoes" element={<Aplicacoes />} />
-                <Route path="/meu-perfil" element={<MeuPerfil />} />
+                {privateRoutes.map(({ path, element }) => (
+                    <Route key={path} path={path} element={element} />
+                ))}
             </Routes>
         </BrowserRouter>
     );

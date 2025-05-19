@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Sidebar from './Sidebar';
 import PageLoader from './PageLoader';
+
+/**
+ * Layout principal com sidebar e loader
+ * @param {{ title?: string, description?: string, children?: React.ReactNode }} props
+ */
 
 function MainLayout({ title, description, children }) {
     const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
@@ -32,5 +38,16 @@ function MainLayout({ title, description, children }) {
         </div>
     );
 }
+
+MainLayout.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  children: PropTypes.node,
+};
+
+MainLayout.defaultProps = {
+  title: '',
+  description: '',
+};
 
 export default MainLayout;
