@@ -120,4 +120,15 @@
   body {
     @apply bg-background text-foreground;
   }
+  body, html, #root {
+    min-height: 100vh;
+    /* Textura rural: padrão sutil de palha/cânhamo */
+    background-color: #f7f3ee;
+    background-image:
+      repeating-linear-gradient(135deg, #e5d3b3 0px, #e5d3b3 2px, transparent 2px, transparent 20px),
+      repeating-linear-gradient(45deg, #f9e7c2 0px, #f9e7c2 1.5px, transparent 1.5px, transparent 18px),
+      url('/imgs/wood-pattern.png');
+    background-size: 120px 120px, 180px 180px, 400px 400px;
+    background-blend-mode: multiply, lighten, normal;
+  }
 }

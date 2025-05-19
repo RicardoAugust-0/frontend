@@ -61,36 +61,51 @@ function Sidebar({ onToggle, isExpanded, showContent }) {
     // Animação de entrada para desktop
     return (
         <>
+            {/* Overlay escuro ao abrir a sidebar no mobile */}
+            {!isDesktop && expanded && (
+                <div className="fixed inset-0 bg-black/40 z-30 transition-opacity duration-300" onClick={onToggle} />
+            )}
             {/* Ícone de menu só em telas pequenas */}
             <button
                 onClick={onToggle}
-                className="bg-gray-800 text-white p-2 rounded-md shadow-md fixed top-4 left-4 z-50 block lg:hidden"
+                className="bg-gradient-to-br from-[#bfa77a] via-[#f9e7c2] to-[#a97c50] text-[#7c5a3a] p-2 rounded-xl shadow-lg fixed top-4 left-4 z-50 block lg:hidden active:scale-90 transition-transform duration-150 hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-[#bfa77a]"
+                style={{ boxShadow: '0 2px 8px 0 #bfa77a55' }}
             >
-                <Menu className="w-6 h-6" />
+                <Menu className="w-7 h-7" />
             </button>
 
             {/* Sidebar sempre visível em desktop, toggle em mobile */}
             <aside
-                className={`bg-gray-800 text-white min-h-screen flex flex-col shadow-md fixed top-0 left-0 z-40 transition-all duration-300 ease-in-out
-                    ${expanded ? 'translate-x-0 w-64' : '-translate-x-full w-16'}
+                className={`relative bg-[#f9e7c2]/90 text-[#7c5a3a] min-h-screen flex flex-col shadow-lg border-r-2 border-[#e5d3b3] fixed top-0 left-0 z-40 transition-all duration-300 ease-in-out
+                    ${expanded ? 'translate-x-0 w-64' : '-translate-x-0 w-0'}
                     lg:translate-x-0 lg:w-64
                     transition-all duration-700
-                    ${isDesktop ? (showContent ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8') : ''}`}
-                style={{ willChange: 'transform, width' }}
+                    ${isDesktop ? (showContent ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8') : ''}
+                    ${!expanded && !isDesktop ? 'pointer-events-none select-none' : ''}`}
+                style={{
+                    willChange: 'transform, width',
+                    backgroundImage: "url('/imgs/wood-texture.webp')",
+                    backgroundRepeat: 'repeat',
+                    backgroundSize: 'auto',
+                    boxShadow: '2px 0 12px 0 #e5d3b3'
+                }}
             >
-                <div className="p-4 flex items-center justify-center">
+                {/* Overlay bege translúcido para suavizar a textura */}
+                <div className="absolute inset-0 bg-[#f9e7c2]/90 pointer-events-none z-0" />
+                {/* Adiciona um espaçamento superior e à esquerda no conteúdo principal para evitar sobreposição do botão de menu no mobile */}
+                <div className={`relative z-10 p-4 flex items-center justify-center ${!expanded && !isDesktop ? 'hidden' : ''} ${!isDesktop ? 'mt-4 ml-12' : ''}`}>
                     <Link to="/dashboard" className="flex items-center text-xl font-bold">
-                        <Icon iconNode={cowHead} className="h-8 w-8 transition-opacity duration-300 opacity-100" />
-                        <span className={`ml-2 transition-opacity duration-300 ${expanded ? 'opacity-100' : 'opacity-0'} lg:opacity-100`}>Moovox</span>
+                        <Icon iconNode={cowHead} className="h-8 w-8 transition-opacity duration-300 opacity-100 text-[#bfa77a] drop-shadow" />
+                        <span className={`ml-2 transition-opacity duration-300 font-poppins tracking-wide ${expanded ? 'opacity-100' : 'opacity-0'} lg:opacity-100`}>Moovox</span>
                     </Link>
                 </div>
-                <nav className="mt-6">
+                <nav className={`relative z-10 mt-6 ${!expanded && !isDesktop ? 'hidden' : ''}`}>
                     {menuItems.map(({ to, icon, label }) => (
                         <NavLink
                             key={to}
                             to={to}
                             className={({ isActive }) =>
-                                `flex items-center p-4 hover:bg-gray-700 ${isActive ? 'bg-green-700' : ''}`
+                                `flex items-center p-4 rounded-lg mx-2 my-1 font-semibold hover:bg-[#e5d3b3]/80 hover:text-[#7c5a3a] transition-colors duration-200 ${isActive ? 'bg-[#bfa77a] text-white shadow-md border-l-4 border-[#7c5a3a]' : ''}`
                             }
                         >
                             {icon}
@@ -99,7 +114,7 @@ function Sidebar({ onToggle, isExpanded, showContent }) {
                     ))}
                     <Dialog open={open} onOpenChange={setOpen}>
                         <DialogTrigger asChild>
-                            <button className="flex items-center p-4 hover:bg-gray-700 mt-auto w-full">
+                            <button className="flex items-center p-4 rounded-lg mx-2 my-1 font-semibold hover:bg-[#e5d3b3]/80 hover:text-[#7c5a3a] mt-auto w-full transition-colors duration-200">
                                 <ArrowLeftFromLine className="mr-2 w-5 h-5" />
                                 <span className={`transition-opacity duration-300 ${expanded ? 'opacity-100' : 'opacity-0'} lg:opacity-100`}>Sair</span>
                             </button>
@@ -114,7 +129,7 @@ function Sidebar({ onToggle, isExpanded, showContent }) {
                         </DialogContent>
                     </Dialog>
                 </nav>
-                <div className="p-4 mt-auto text-center text-sm text-gray-500 transition-opacity duration-300">
+                <div className={`relative z-10 p-4 mt-auto text-center text-xs text-[#bfa77a] transition-opacity duration-300 ${!expanded && !isDesktop ? 'hidden' : ''}`}>
                     <span className={`${expanded ? 'opacity-100' : 'opacity-0'}`}>© 2025 Moovox</span>
                 </div>
             </aside>
