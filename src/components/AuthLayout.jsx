@@ -17,10 +17,9 @@ function AuthLayout() {
         <div className="relative w-full h-screen overflow-hidden bg-black">
             <BackgroundVideo />
             {loading && <PageLoader />}
-            {/* Conteúdo das páginas de autenticação */}
-            <div className="relative z-30 flex justify-center items-center h-full">
-                <Outlet /> {/* O Outlet renderiza o componente da rota correspondente */}
-            </div>
+            <main className="relative z-30 flex justify-center items-center min-h-screen" role="main">
+                <Outlet />
+            </main>
         </div>
     );
 }

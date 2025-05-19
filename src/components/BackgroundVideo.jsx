@@ -29,20 +29,19 @@ function BackgroundVideo() {
     }, [currentVideo]);
 
     return (
-        <div>
-            {/* Vídeo com fade */}
-            <video
-                ref={videoRef}
-                onEnded={handleVideoEnd}
-                muted
-                playsInline
-                autoPlay
-                className={`object-cover w-full h-full fixed top-0 left-0 z-10 pointer-events-none transition-opacity duration-700 ${fade ? 'opacity-0' : 'opacity-40'}`}
-            >
-                <source src={videos[currentVideo]} type="video/mp4" />
-                Seu navegador não suporta vídeos.
-            </video>
-        </div>
+        <video
+            ref={videoRef}
+            onEnded={handleVideoEnd}
+            muted
+            playsInline
+            autoPlay
+            preload="auto"
+            aria-hidden="true"
+            className={`object-cover w-full h-full fixed top-0 left-0 z-10 pointer-events-none transition-opacity duration-700 ${fade ? 'opacity-0' : 'opacity-40'}`}
+        >
+            <source key={videos[currentVideo]} src={videos[currentVideo]} type="video/mp4" />
+            Seu navegador não suporta vídeos.
+        </video>
     )
 }
 

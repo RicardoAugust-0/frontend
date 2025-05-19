@@ -1,4 +1,3 @@
-// public/pages/Dashboard.jsx
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import MainLayout from '../../components/MainLayout';

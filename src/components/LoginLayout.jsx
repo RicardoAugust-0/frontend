@@ -3,9 +3,9 @@ import { Outlet } from 'react-router-dom';
 
 function LoginLayout() {
     return (
-        <div className="relative z-30 flex justify-center items-center h-full">
+        <main className="relative z-30 flex justify-center items-center min-h-screen" role="main">
             <Outlet />
-        </div>
+        </main>
     );
 }
 
