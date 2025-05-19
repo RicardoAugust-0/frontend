@@ -6,7 +6,7 @@ import { cn } from '../../lib/utils';
  * Card visual reutilizável
  * @param {{ as?: React.ElementType, className?: string, children?: React.ReactNode, variant?: string }} props
  */
-function Card({ as: Component = 'div', className = '', children, variant = 'default', ...props }) {
+function Card({ as: Component = 'div', className = '', children, variant = 'default', tabIndex, role, ...props }) {
   // Variantes de cor: rural, terra, palha, verde, alerta, escuro
   const variants = {
     default: 'bg-white text-[#3e2c1a] border border-[#e5e0d8]',
@@ -20,11 +20,13 @@ function Card({ as: Component = 'div', className = '', children, variant = 'defa
   return (
     <Component
       className={cn(
-        'rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300',
+        'rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.025]',
         variants[variant] || variants.default,
         className,
         'group relative overflow-hidden'
       )}
+      tabIndex={tabIndex}
+      role={role}
       {...props}
     >
       <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 bg-gradient-to-br from-[#bfa77a] via-[#f9e7c2] to-[#a97c50] pointer-events-none" />
@@ -38,6 +40,8 @@ Card.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
   variant: PropTypes.oneOf(['default', 'rural', 'terra', 'palha', 'verde', 'alerta', 'escuro']),
+  tabIndex: PropTypes.number,
+  role: PropTypes.string,
 };
 
 Card.defaultProps = {

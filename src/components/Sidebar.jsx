@@ -27,7 +27,8 @@ function Sidebar({ onToggle, isExpanded, showContent }) {
     const navigate = useNavigate();
 
     // Classes calculadas
-    const asideBase = 'relative bg-[#4e2e13]/95 text-[#fff8f0] min-h-screen flex flex-col shadow-lg border-r-2 border-[#bfa77a] top-0 left-0 z-40 transition-all duration-300 ease-in-out';
+    // Troca o fundo para verde ainda mais escuro
+    const asideBase = 'relative bg-[#10291a]/95 text-[#fff8f0] min-h-screen flex flex-col shadow-lg border-r-2 border-[#bfa77a] top-0 left-0 z-40 transition-all duration-300 ease-in-out';
     const asideExpanded = expanded ? 'translate-x-0 w-64' : '-translate-x-0 w-0';
     const asideDesktop = 'lg:translate-x-0 lg:w-64';
     const asideShowContent = isDesktop ? (showContent ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8') : '';
@@ -76,8 +77,8 @@ function Sidebar({ onToggle, isExpanded, showContent }) {
                 animate={{ x: expanded ? 0 : -300, opacity: expanded ? 1 : 0 }}
                 transition={{ type: 'spring', stiffness: 80, damping: 20, duration: 0.5 }}
             >
-                {/* Overlay bege translúcido */}
-                <div className="absolute inset-0 bg-[#4e2e13]/80 pointer-events-none z-0" />
+                {/* Overlay verde escuro translúcido */}
+                <div className="absolute inset-0 bg-[#10291a]/80 pointer-events-none z-0" />
 
                 {/* Logo */}
                 <div className={`relative z-10 p-4 flex items-center justify-center ${!expanded && !isDesktop ? 'hidden' : ''} ${!isDesktop ? 'mt-4 ml-12' : ''}`}>
