@@ -2,11 +2,10 @@
 
 module.exports = {
   content: [
-    "./index.html",
-    "./src/**/*.{js,jsx}",
-    "./components/**/*.{js,jsx}",
-    "./node_modules/@radix-ui/themes/dist/themes.css", // Se estiver usando Radix Themes
-    "./node_modules/shadcn-ui/dist/components/**/*.{js,jsx}", // Importante para o Shadcn UI
+    "./public/index.html",
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "./node_modules/@radix-ui/themes/dist/themes.css",
+    "./node_modules/shadcn-ui/dist/components/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
     extend: {

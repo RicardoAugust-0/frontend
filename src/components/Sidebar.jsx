@@ -13,27 +13,34 @@ import {
 } from 'lucide-react';
 import { cowHead } from '@lucide/lab';
 
-function Sidebar({ onToggle, isExpanded }) {
+function Sidebar({ onToggle, isExpanded, showContent }) {
+    // Detecta se está em desktop (lg+) para forçar expandido
+    const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 1024;
+    const expanded = isDesktop ? true : isExpanded;
+    // Animação de entrada para desktop
     return (
         <>
-            {/* Ícone de menu */}
+            {/* Ícone de menu só em telas pequenas */}
             <button
                 onClick={onToggle}
-                className="bg-gray-800 text-white p-2 rounded-md shadow-md fixed top-4 left-4 z-50"
+                className="bg-gray-800 text-white p-2 rounded-md shadow-md fixed top-4 left-4 z-50 block lg:hidden"
             >
                 <Menu className="w-6 h-6" />
             </button>
 
-            {/* Sidebar */}
+            {/* Sidebar sempre visível em desktop, toggle em mobile */}
             <aside
-                className={`bg-gray-800 text-white min-h-screen flex flex-col shadow-md fixed top-0 left-0 z-40 transition-all duration-300 ease-in-out ${isExpanded ? 'translate-x-0 w-64' : '-translate-x-full w-16'
-                    }`}
+                className={`bg-gray-800 text-white min-h-screen flex flex-col shadow-md fixed top-0 left-0 z-40 transition-all duration-300 ease-in-out
+                    ${expanded ? 'translate-x-0 w-64' : '-translate-x-full w-16'}
+                    lg:translate-x-0 lg:w-64
+                    transition-all duration-700
+                    ${isDesktop ? (showContent ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8') : ''}`}
                 style={{ willChange: 'transform, width' }}
             >
                 <div className="p-4 flex items-center justify-center">
                     <Link to="/dashboard" className="flex items-center text-xl font-bold">
-                        <Icon iconNode={cowHead} className={`h-8 w-8 transition-opacity duration-300 ${isExpanded ? 'opacity-100' : 'opacity-100'}`} />
-                        <span className={`ml-2 transition-opacity duration-300 ${isExpanded ? 'opacity-100' : 'opacity-0'}`}>Moovox</span>
+                        <Icon iconNode={cowHead} className="h-8 w-8 transition-opacity duration-300 opacity-100" />
+                        <span className={`ml-2 transition-opacity duration-300 ${expanded ? 'opacity-100' : 'opacity-0'} lg:opacity-100`}>Moovox</span>
                     </Link>
                 </div>
                 <nav className="mt-6">
@@ -44,7 +51,7 @@ function Sidebar({ onToggle, isExpanded }) {
                         }
                     >
                         <LayoutDashboard className="mr-2 w-5 h-5" />
-                        <span className={`transition-opacity duration-300 ${isExpanded ? 'opacity-100' : 'opacity-0'}`}>Dashboard</span>
+                        <span className={`transition-opacity duration-300 ${expanded ? 'opacity-100' : 'opacity-0'} lg:opacity-100`}>Dashboard</span>
                     </NavLink>
                     <NavLink
                         to="/usuarios"
@@ -53,7 +60,7 @@ function Sidebar({ onToggle, isExpanded }) {
                         }
                     >
                         <Users className="mr-2 w-5 h-5" />
-                        <span className={`transition-opacity duration-300 ${isExpanded ? 'opacity-100' : 'opacity-0'}`}>Usuários</span>
+                        <span className={`transition-opacity duration-300 ${expanded ? 'opacity-100' : 'opacity-0'} lg:opacity-100`}>Usuários</span>
                     </NavLink>
                     <NavLink
                         to="/animais"
@@ -62,7 +69,7 @@ function Sidebar({ onToggle, isExpanded }) {
                         }
                     >
                         <Icon iconNode={cowHead} className="mr-2 w-5 h-5" />
-                        <span className={`transition-opacity duration-300 ${isExpanded ? 'opacity-100' : 'opacity-0'}`}>Animais</span>
+                        <span className={`transition-opacity duration-300 ${expanded ? 'opacity-100' : 'opacity-0'} lg:opacity-100`}>Animais</span>
                     </NavLink>
                     <NavLink
                         to="/vacinas"
@@ -71,7 +78,7 @@ function Sidebar({ onToggle, isExpanded }) {
                         }
                     >
                         <Droplets className="mr-2 w-5 h-5" />
-                        <span className={`transition-opacity duration-300 ${isExpanded ? 'opacity-100' : 'opacity-0'}`}>Vacinas</span>
+                        <span className={`transition-opacity duration-300 ${expanded ? 'opacity-100' : 'opacity-0'} lg:opacity-100`}>Vacinas</span>
                     </NavLink>
                     <NavLink
                         to="/aplicacoes"
@@ -80,7 +87,7 @@ function Sidebar({ onToggle, isExpanded }) {
                         }
                     >
                         <Package className="mr-2 w-5 h-5" />
-                        <span className={`transition-opacity duration-300 ${isExpanded ? 'opacity-100' : 'opacity-0'}`}>Aplicações</span>
+                        <span className={`transition-opacity duration-300 ${expanded ? 'opacity-100' : 'opacity-0'} lg:opacity-100`}>Aplicações</span>
                     </NavLink>
                     <NavLink
                         to="/meu-perfil"
@@ -89,18 +96,18 @@ function Sidebar({ onToggle, isExpanded }) {
                         }
                     >
                         <User className="mr-2 w-5 h-5" />
-                        <span className={`transition-opacity duration-300 ${isExpanded ? 'opacity-100' : 'opacity-0'}`}>Meu Perfil</span>
+                        <span className={`transition-opacity duration-300 ${expanded ? 'opacity-100' : 'opacity-0'} lg:opacity-100`}>Meu Perfil</span>
                     </NavLink>
                     <NavLink
                         to="/sair"
                         className="flex items-center p-4 hover:bg-gray-700 mt-auto"
                     >
                         <ArrowLeftFromLine className="mr-2 w-5 h-5" />
-                        <span className={`transition-opacity duration-300 ${isExpanded ? 'opacity-100' : 'opacity-0'}`}>Sair</span>
+                        <span className={`transition-opacity duration-300 ${expanded ? 'opacity-100' : 'opacity-0'} lg:opacity-100`}>Sair</span>
                     </NavLink>
                 </nav>
                 <div className="p-4 mt-auto text-center text-sm text-gray-500 transition-opacity duration-300">
-                    <span className={`${isExpanded ? 'opacity-100' : 'opacity-0'}`}>© 2025 Moovox</span>
+                    <span className={`${expanded ? 'opacity-100' : 'opacity-0'}`}>© 2025 Moovox</span>
                 </div>
             </aside>
         </>
