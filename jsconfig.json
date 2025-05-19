@@ -4,25 +4,15 @@
         "baseUrl": ".",
         "paths": {
             "@/*": [
-                "./src/*"
-            ],
-            "@root/*": [
-                "./*"
+                "src/*"
             ],
             "@lib/*": [
-                "lib/*"
+                "src/lib/*"
             ]
         }
     },
     "include": [
-        "./src/**/*",
-        "./components/**/*",
-        "src/lib/**/*",
-        "./*.js",
-        "./*.jsx",
-        "src/lib/utils.js"
-    ],
-    "exclude": [
-        "node_modules"
+        "src/**/*",
+        "components/**/*"
     ]
 }

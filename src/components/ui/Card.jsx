@@ -1,0 +1,25 @@
+import React from 'react';
+
+function Card({ className = '', children, variant = 'default', ...props }) {
+  // Variantes de cor: rural, terra, palha, verde, alerta, escuro
+  const variants = {
+    default: 'bg-white text-[#3e2c1a] border border-[#e5e0d8]',
+    rural: 'bg-[#f7f3ee] text-[#3e2c1a] border border-[#bfa77a]',
+    terra: 'bg-[#a97c50] text-white border border-[#7c5a3a]',
+    palha: 'bg-[#f9e7c2] text-[#7c5a3a] border border-[#e5d3b3]',
+    verde: 'bg-[#4e6b4e] text-white border border-[#2e3d2e]',
+    alerta: 'bg-[#b94a48] text-white border border-[#7c2f2f]',
+    escuro: 'bg-[#2d2d2d] text-white border border-[#1a1a1a]',
+  };
+  return (
+    <div
+      className={`rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 ${variants[variant] || variants.default} ${className} group relative overflow-hidden`}
+      {...props}
+    >
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 bg-gradient-to-br from-[#bfa77a] via-[#f9e7c2] to-[#a97c50] pointer-events-none" />
+      <div className="relative z-10">{children}</div>
+    </div>
+  );
+}
+
+export default Card;

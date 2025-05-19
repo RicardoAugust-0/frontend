@@ -1,6 +1,6 @@
 // src/components/Sidebar.jsx
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import {
     LayoutDashboard,
     Users,
@@ -12,11 +12,14 @@ import {
     Menu
 } from 'lucide-react';
 import { cowHead } from '@lucide/lab';
+import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription } from './ui/dialog';
 
 function Sidebar({ onToggle, isExpanded, showContent }) {
     // Detecta se está em desktop (lg+) para forçar expandido
     const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 1024;
     const expanded = isDesktop ? true : isExpanded;
+    const [open, setOpen] = useState(false);
+    const navigate = useNavigate();
     // Animação de entrada para desktop
     return (
         <>
@@ -98,13 +101,22 @@ function Sidebar({ onToggle, isExpanded, showContent }) {
                         <User className="mr-2 w-5 h-5" />
                         <span className={`transition-opacity duration-300 ${expanded ? 'opacity-100' : 'opacity-0'} lg:opacity-100`}>Meu Perfil</span>
                     </NavLink>
-                    <NavLink
-                        to="/sair"
-                        className="flex items-center p-4 hover:bg-gray-700 mt-auto"
-                    >
-                        <ArrowLeftFromLine className="mr-2 w-5 h-5" />
-                        <span className={`transition-opacity duration-300 ${expanded ? 'opacity-100' : 'opacity-0'} lg:opacity-100`}>Sair</span>
-                    </NavLink>
+                    <Dialog open={open} onOpenChange={setOpen}>
+                        <DialogTrigger asChild>
+                            <button className="flex items-center p-4 hover:bg-gray-700 mt-auto w-full">
+                                <ArrowLeftFromLine className="mr-2 w-5 h-5" />
+                                <span className={`transition-opacity duration-300 ${expanded ? 'opacity-100' : 'opacity-0'} lg:opacity-100`}>Sair</span>
+                            </button>
+                        </DialogTrigger>
+                        <DialogContent>
+                            <DialogTitle>Deseja realmente sair?</DialogTitle>
+                            <DialogDescription>Você será deslogado e voltará para a tela de login.</DialogDescription>
+                            <div className="flex justify-end gap-2 mt-4">
+                                <button className="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300" onClick={() => setOpen(false)}>Cancelar</button>
+                                <button className="px-4 py-2 rounded bg-red-600 text-white hover:bg-red-700" onClick={() => { setOpen(false); navigate('/'); }}>Sair</button>
+                            </div>
+                        </DialogContent>
+                    </Dialog>
                 </nav>
                 <div className="p-4 mt-auto text-center text-sm text-gray-500 transition-opacity duration-300">
                     <span className={`${expanded ? 'opacity-100' : 'opacity-0'}`}>© 2025 Moovox</span>
