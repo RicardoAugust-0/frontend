@@ -76,7 +76,7 @@ function Sidebar({ onToggle, isExpanded, showContent }) {
 
             {/* Sidebar sempre visível em desktop, toggle em mobile */}
             <aside
-                className={`relative bg-[#f9e7c2]/90 text-[#7c5a3a] min-h-screen flex flex-col shadow-lg border-r-2 border-[#e5d3b3] fixed top-0 left-0 z-40 transition-all duration-300 ease-in-out
+                className={`relative bg-[#f9e7c2]/90 text-[#7c5a3a] min-h-screen flex flex-col shadow-lg border-r-2 border-[#e5d3b3] top-0 left-0 z-40 transition-all duration-300 ease-in-out
                     ${expanded ? 'translate-x-0 w-64' : '-translate-x-0 w-0'}
                     lg:translate-x-0 lg:w-64
                     transition-all duration-700
