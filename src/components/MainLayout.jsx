@@ -21,13 +21,13 @@ function MainLayout({ title, description, children }) {
 
     const mainBgStyle = showContent
         ? {
-            backgroundImage: "url('/imgs/wood-texture.webp')",
+            backgroundImage: "url('/imgs/grass.svg')",
             backgroundRepeat: 'repeat',
             backgroundSize: 'auto',
         }
         : {};
 
-    const headerClass = `mb-6 flex items-center gap-4 border-b-2 border-[#e5d3b3] pb-4 relative transition-all duration-300 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`;
+    const headerClass = `mb-6 flex items-center gap-4 rounded-2xl border-y-2 bg-amber-100 border-[#e5d3b3] py-4 relative transition-all duration-300 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`;
     const contentClass = `transition-all duration-300 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`;
 
     return (
@@ -37,12 +37,13 @@ function MainLayout({ title, description, children }) {
                 isExpanded={isSidebarExpanded}
                 showContent={showContent}
             />
-            <main className="flex-grow p-4 bg-white/80 transition-all duration-200 ease-in-out">
+            <main className="flex-grow p-4 bg-white/85 transition-all duration-200 ease-in-out">
                 <header className={headerClass}>
                     <img
-                        src="/imgs/logo-moovox-redimensionado.png"
+                        src="/imgs/moovox.svg"
                         alt="Logo Moovox"
-                        className="w-12 h-12 ml-12 object-contain drop-shadow-md bg-[#f9e7c2] rounded-full border border-[#bfa77a]"
+                        className="w-24 h-24 ml-12 object-contain drop-shadow-md bg-[#f9e7c2] rounded-full border border-[#bfa77a]"
+                        draggable='false'
                     />
                     <div>
                         <h2 className="text-2xl sm:text-3xl font-extrabold text-[#7c5a3a] font-poppins tracking-tight drop-shadow-sm">{title}</h2>
