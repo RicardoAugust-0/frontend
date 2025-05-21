@@ -23,13 +23,13 @@ function MainLayout({ title, description, children }) {
     const contentClass = `transition-all duration-300 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`;
 
     return (
-        <div className="flex bg-gray-100 min-h-screen">
+        <div className="flex min-h-screen ">
             <Sidebar
                 onToggle={() => setIsSidebarExpanded(!isSidebarExpanded)}
                 isExpanded={isSidebarExpanded}
                 showContent={showContent}
             />
-            <main className="flex-grow p-4 bg-white/85 transition-all duration-200 ease-in-out">
+            <main className="flex-grow p-4 transition-all duration-200 ease-in-out">
                 <header className={headerClass}>
                     <img
                         src="/imgs/moovox.svg"

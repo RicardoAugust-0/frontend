@@ -5,11 +5,11 @@ import { Button } from "./ui/button";
 function LoginCard() {
     return (
         <div className="w-full px-4">
-            <div className="bg-white w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl flex flex-col justify-between shadow-[inset_0px_0px_4px_1px_#b3ffcf] bg-opacity-90 rounded-xl p-8 text-center items-center backdrop-blur-md mx-auto">
+            <div className="bg-white w-full max-w-sm sm:max-w-md md:max-w-md lg:max-w-lg flex flex-col justify-between shadow-[inset_0px_0px_4px_1px_#b3ffcf] bg-opacity-90 rounded-xl p-8 text-center items-center backdrop-blur-md mx-auto">
                 <img
                     src="/imgs/moovox.svg"
                     alt="Moovox Logo"
-                    className="mx-auto mb-4 w-40"
+                    className="mx-auto mb-4 w-32"
                     draggable="false"
                 />
                 <h2 className="font-poppins text-2xl text-green-700 mb-1">

@@ -1,19 +1,20 @@
 import { Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Button } from "./ui/button";
 
 function ForgotPassCard() {
     return (
         <div className="w-full px-4">
             <div className="bg-white w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl flex flex-col justify-between shadow-[inset_0px_0px_4px_1px_#b3ffcf] bg-opacity-90 rounded-xl p-8 text-center items-center backdrop-blur-md mx-auto">
                 <img
-                    src="imgs/logo-moovox-redimensionado.png"
+                    src="imgs/moovox.svg"
                     alt="Moovox Logo"
-                    className="mx-auto mb-4 w-32"
+                    className="mx-auto w-32"
                     draggable="false"
                 />
-
+                <span className="text-3xl text-amber-950 font-bold mb-4">Moovox</span>
                 <h2 className="font-poppins text-2xl text-green-700 mb-1">
-                    Esqueceu sua <span className="text-3xl text-amber-950 font-bold">senha</span>?
+                    Esqueceu sua senha?
                 </h2>
                 <p className="text-sm text-gray-600 mb-6 font-poppins">
                     Informe seu e-mail e enviaremos instruções para recuperação.
@@ -34,12 +35,12 @@ function ForgotPassCard() {
                         </div>
                     </div>
 
-                    <button
+                    <Button
                         type="submit"
-                        className="w-full font-poppins font-bold bg-amber-950 text-white p-[5px] rounded-xl hover:bg-amber-800 transition"
+                        className="w-full font-poppins font-bold bg-green-600 text-white p-[5px] rounded-xl hover:bg-green-700 transition"
                     >
                         Enviar instruções
-                    </button>
+                    </Button>
                 </form>
 
                 <Link
