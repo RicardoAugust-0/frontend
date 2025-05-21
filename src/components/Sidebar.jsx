@@ -7,14 +7,13 @@ import {
     Droplets,
     Package,
     User,
-    ArrowLeftFromLine,
     Icon,
     Menu
 } from 'lucide-react';
 import { cowHead } from '@lucide/lab';
-import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription } from './ui/dialog';
-import PropTypes from 'prop-types';
 import { motion, AnimatePresence } from 'framer-motion';
+import PropTypes from 'prop-types';
+import LogoutButton from './LogoutButton';
 
 /**
  * Sidebar de navegação principal
@@ -23,12 +22,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 function Sidebar({ onToggle, isExpanded, showContent }) {
     const isDesktop = useIsDesktop();
     const expanded = isDesktop ? true : isExpanded;
-    const [open, setOpen] = React.useState(false);
     const navigate = useNavigate();
 
     // Classes calculadas
     // Troca o fundo para verde ainda mais escuro
-    const asideBase = 'relative bg-[#10291a]/95 text-[#fff8f0] min-h-screen flex flex-col shadow-lg border-r-2 border-[#bfa77a] top-0 left-0 z-40 transition-all duration-300 ease-in-out';
+    // ALTERAÇÃO: Sidebar agora é fixa para sobrepor o conteúdo e permite scroll
+    // Sidebar: fixa no mobile (inset-0 cobre toda a tela), relativa no desktop (min-h-screen)
+    const asideBase = 'fixed inset-0 lg:relative lg:min-h-screen bg-[#10291a]/95 text-[#fff8f0] flex flex-col shadow-lg border-r-2 border-[#bfa77a] z-40 transition-all duration-300 ease-in-out overflow-y-auto hide-scrollbar';
     const asideExpanded = expanded ? 'translate-x-0 w-64' : '-translate-x-0 w-0';
     const asideDesktop = 'lg:translate-x-0 lg:w-64';
     const asideShowContent = isDesktop ? (showContent ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8') : '';
@@ -37,7 +37,6 @@ function Sidebar({ onToggle, isExpanded, showContent }) {
 
     // Função para sair
     function handleLogout() {
-        setOpen(false);
         navigate('/');
     }
 
@@ -128,40 +127,10 @@ function Sidebar({ onToggle, isExpanded, showContent }) {
                     </AnimatePresence>
 
                     {/* Botão Sair */}
-                    <Dialog open={open} onOpenChange={setOpen}>
-                        <DialogTrigger asChild>
-                            <motion.button
-                                className="flex items-center p-4 rounded-lg mx-2 my-1 font-semibold bg-transparent hover:bg-[#fff8f0]/10 hover:text-[#fff8f0] transition-colors duration-200 text-[#fff8f0]"
-                                tabIndex={0}
-                                aria-label="Abrir diálogo de sair"
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                            >
-                                <ArrowLeftFromLine className="mr-2 w-5 h-5" />
-                                <span className={`transition-opacity duration-300 ${expanded ? 'opacity-100' : 'opacity-0'} lg:opacity-100 text-[#fff8f0]`}>Sair</span>
-                            </motion.button>
-                        </DialogTrigger>
-                        <DialogContent>
-                            <DialogTitle>Deseja realmente sair?</DialogTitle>
-                            <DialogDescription>Você será deslogado e voltará para a tela de login.</DialogDescription>
-                            <div className="flex justify-end gap-2 mt-4">
-                                <button
-                                    className="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300 text-[#4e2e13]"
-                                    onClick={() => setOpen(false)}
-                                    tabIndex={0}
-                                >
-                                    Cancelar
-                                </button>
-                                <button
-                                    className="px-4 py-2 rounded bg-red-600 text-white hover:bg-red-700"
-                                    onClick={handleLogout}
-                                    tabIndex={0}
-                                >
-                                    Sair
-                                </button>
-                            </div>
-                        </DialogContent>
-                    </Dialog>
+                    <LogoutButton
+                        onLogout={handleLogout}
+                        expanded={expanded}
+                    />
                 </nav>
 
                 {/* Rodapé */}

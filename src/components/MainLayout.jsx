@@ -19,19 +19,11 @@ function MainLayout({ title, description, children }) {
         return () => clearTimeout(timeout);
     }, [location]);
 
-    const mainBgStyle = showContent
-        ? {
-            backgroundImage: "url('/imgs/grass.svg')",
-            backgroundRepeat: 'repeat',
-            backgroundSize: 'auto',
-        }
-        : {};
-
     const headerClass = `mb-6 flex items-center gap-4 rounded-2xl border-y-2 bg-amber-100 border-[#e5d3b3] py-4 relative transition-all duration-300 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`;
     const contentClass = `transition-all duration-300 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`;
 
     return (
-        <div className="flex bg-gray-100 min-h-screen" style={mainBgStyle}>
+        <div className="flex bg-gray-100 min-h-screen">
             <Sidebar
                 onToggle={() => setIsSidebarExpanded(!isSidebarExpanded)}
                 isExpanded={isSidebarExpanded}
@@ -59,14 +51,14 @@ function MainLayout({ title, description, children }) {
 }
 
 MainLayout.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  children: PropTypes.node,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    children: PropTypes.node,
 };
 
 MainLayout.defaultProps = {
-  title: '',
-  description: '',
+    title: '',
+    description: '',
 };
 
 export default MainLayout;

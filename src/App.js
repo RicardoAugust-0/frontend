@@ -10,7 +10,7 @@ import Animais from './public/pages/Animais';
 import Vacinas from './public/pages/Vacinas';
 import Aplicacoes from './public/pages/Aplicacoes';
 import MeuPerfil from './public/pages/MeuPerfil';
-import './App.css';
+import './styles/globals.css'
 
 // Separação das rotas em um array para facilitar manutenção e escalabilidade
 const privateRoutes = [
