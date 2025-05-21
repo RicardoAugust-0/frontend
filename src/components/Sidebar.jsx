@@ -83,8 +83,6 @@ function Sidebar({ onToggle, isExpanded, showContent }) {
                 exit={{ x: -300, opacity: 0 }}
                 transition={{ type: 'tween' }}
             >
-                {/* Overlay verde escuro translúcido */}
-                <div className="absolute inset-0 bg-[#10291a]/80 pointer-events-none z-0" />
 
                 {/* Logo */}
                 <div className={`relative z-10 p-4 flex items-center justify-center ${!expanded && !isDesktop ? 'hidden' : ''} ${!isDesktop ? 'mt-4 ml-12' : ''}`}>
